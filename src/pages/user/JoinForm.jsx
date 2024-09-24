@@ -65,7 +65,7 @@ const JoinForm = () => {
 
             const userVo = {
                 id: id,
-                pw: pw,
+                password: pw,
                 name: name,
                 gender: gender
         

@@ -39,22 +39,23 @@ const LoginForm = () => {
 
         const userVo = {
             id: id,
-            pw: pw
+            password: pw
     
         }
         console.log(userVo);
 
+
         axios({
 
-            method: 'get',// put, post, delete
-            url: 'http://localhost:9000/api/users',//get delete
+            method: 'post',// put, post, delete
+            url: 'http://localhost:9000/api/loginusers',//get delete
 
-            //headers: { "Content-Type": "application/json; charset=utf-8" }, // post put
+            headers: { "Content-Type": "application/json; charset=utf-8" }, // post put
 
-            params: userVo, // get delete 쿼리스트링(파라미터)
-            //data: guestbookVo, // put, post, JSON(자동변환됨)
+            //params: userVo, // get delete 쿼리스트링(파라미터)
+            data: userVo, // put, post, JSON(자동변환됨)
 
-
+ 
             responseType: 'json' //수신타입
 
         }).then(response => {
