@@ -1,7 +1,7 @@
 //import 라이브러리
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -16,12 +16,15 @@ const LoginForm = () => {
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
 
+    const navigate = useNavigate();
+
     /*---일반 변수--------------------------------*/
 
     /*---일반 메소드 -----------------------------*/
 
     /*---훅(useEffect)+이벤트(handle)메소드-------*/
 
+    //아이디
     const handleId = (e) => {
         setId(e.target.value);
     };
@@ -48,7 +51,7 @@ const LoginForm = () => {
         axios({
 
             method: 'post',// put, post, delete
-            url: 'http://localhost:9000/api/loginusers',//get delete
+            url: 'http://localhost:9000/api/users/login',//get delete
 
             headers: { "Content-Type": "application/json; charset=utf-8" }, // post put
 
@@ -61,6 +64,25 @@ const LoginForm = () => {
         }).then(response => {
 
             console.log(response); //수신데이타
+
+            if (response.data.result === 'fail') {
+                alert('로그인 실패 ' + response.data.message );
+            } else {
+                console.log(response.data);
+                alert('로그인 성공');
+
+                //헤더에서 토큰 꺼내기
+                const token = response.headers['authorization'].split(' ')[1];
+                console.log(token);
+
+                //로컬스토리지에 토큰 저장
+                localStorage.setItem("token", token);
+                //로컬스토리지에 authUser 저장
+                localStorage.setItem("authUser", JSON.stringify(response.data.apiData));
+
+                navigate('/');
+
+            }
 
         }).catch(error => {
 
