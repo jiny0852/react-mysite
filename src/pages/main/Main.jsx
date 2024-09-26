@@ -1,10 +1,16 @@
 //import 라이브러리
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+
+
+
+import Footer from '../include/Footer';
+import Header from '../include/Header';
 
 //css 전역에 적용되지만 #main 아래만 적용되도록 css를 코딩했음
 import '../../css/main.css';
+
 
 
 
@@ -14,9 +20,6 @@ const Main = () => {
     /*---라우터 관련-------------------------------*/
 
     /*---상태관리 변수들(값이 변화면 화면 랜더링 )---*/
-    const [token, setToken] = useState(localStorage.getItem('token'));
-    const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('authUser')));
-    console.log(authUser);
 
 
 
@@ -29,25 +32,6 @@ const Main = () => {
 
     /*---훅(useEffect)+이벤트(handle)메소드-------*/
 
-    const handleLogout  = ()=>{
-        console.log('로그아웃');
-
-        //로컬 스토리지에 token 삭제
-        localStorage.removeItem('token');
-        //로컬 스토리지에 authUser 삭제
-        localStorage.removeItem('authUser');
-
-        //회면 변경을 위한 상태값 변경
-        setToken(null);
-        setAuthUser(null);
-
-
-
-
-    };
-
-
-
 
 
     return (
@@ -56,46 +40,8 @@ const Main = () => {
 
             <div id="wrap">
 
-                <div id="header" className="clearfix">
-                    <h1>
-                        <Link to="/" rel="noreferrer noopener">MySite</Link>
-                    </h1>
-
-
-                    {
-                        (token != null)? (
-
-                            <ul>
-                                <li>{authUser.name} 님 안녕하세요^^</li>
-                                <li><button className="btn_s" onClick={handleLogout} >로그아웃</button></li>
-                                <li><Link to={`/user/modifyform/${authUser.no}`} className="btn_s">회원정보수정</Link></li>
-                            </ul>
-
-                        ) : (
-
-                            <ul>
-                                <li><Link to="/user/loginform" className="btn_s" rel="noreferrer noopener">로그인</Link></li>
-                                <li><Link to="/user/joinform" className="btn_s" rel="noreferrer noopener">회원가입</Link></li>
-                            </ul>
-                            
-                        ) 
-                    
-                    }
-
-
-                    
-                </div>
-                {/* //header */}
-
-                <div id="nav">
-                    <ul className="clearfix">
-                        <li><Link to="" rel="noreferrer noopener">입사지원서</Link></li>
-                        <li><Link to="" rel="noreferrer noopener">게시판</Link></li>
-                        <li><Link to="" rel="noreferrer noopener">갤러리</Link></li>
-                        <li><Link to="" rel="noreferrer noopener">방명록</Link></li>
-                    </ul>
-                </div>
-                {/* //nav */}
+                <Header />
+                {/* //header + //nav */}
 
 
                 <div id="container" className="clearfix">
@@ -105,7 +51,7 @@ const Main = () => {
                         {/* content-head 없음 */}
                         <div id="main"> 
                         
-                            <img id="profile-img" src="http://localhost:3000/images/profile.jpg" alt="프로필사진" />
+                            <img id="profile-img" src="/images/profile.jpg" alt="프로필사진" />
                             
                             <div id="greetings">
                                 <p className="text-xlarge">
@@ -141,10 +87,10 @@ const Main = () => {
                 {/* //container */}
 
 
-                <div id="footer">
-                    Copyright ⓒ 1994 신지연. All right reserved
-                </div>
+                <Footer />
                 {/* //footer */}
+
+                
 
             </div>
             {/* //wrap */}

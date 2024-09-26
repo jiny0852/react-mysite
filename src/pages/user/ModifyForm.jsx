@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -13,11 +12,10 @@ const ModifyForm = () => {
     /*---라우터 관련-------------------------------*/
 
     /*---상태관리 변수들(값이 변화면 화면 랜더링 )---*/
-    const [token, setToken] = useState(localStorage.getItem('token'));
+    //const [token, setToken] = useState(localStorage.getItem('token'));
     const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('authUser')));
-    console.log(authUser);
+    //console.log(authUser);
 
-    const { no } = useParams();
     const navigate = useNavigate();
 
     const [id, setId] = useState('');
@@ -31,6 +29,11 @@ const ModifyForm = () => {
 
     /*---일반 변수--------------------------------*/
 
+    //토큰꺼내기
+    const token = localStorage.getItem('token');
+    console.log(token);
+    
+
     /*---일반 메소드 -----------------------------*/
 
     /*---훅(useEffect)+이벤트(handle)메소드-------*/
@@ -41,14 +44,14 @@ const ModifyForm = () => {
         e.preventDefault();
         console.log("전송");
 
-        const personVo = {
-            no: no,
-            id: id,
+        const userVo = {
+            //no: authUser.no,  //토큰으로 처리 왜? 유효성 검사하려고?그게그거같긴한데 
+            //id: id,           //리유 - 토큰 변조 위험성 처리를 위해 컨트롤러에서 처리함
             password: pw,
             name: name,
             gender: gender
         }
-        console.log(personVo);
+        console.log(userVo);
 
 
         //수정 값 서버에 전송
@@ -57,11 +60,14 @@ const ModifyForm = () => {
 
             method: 'put',// put, post, delete
 
-            url: `http://localhost:9000/api/persons/${no}`, //get delete
+            url: 'http://localhost:9000/api/users/me', //get delete
 
-            headers: { "Content-Type": "application/json; charset=utf-8" }, // post put
+            headers: { 
+                "Content-Type": "application/json; charset=utf-8", 
+                "Authorization": `Bearer ${token}`
+            }, // post put
 
-            data: personVo, // put, post, JSON(자동변환됨)
+            data: userVo, // put, post, JSON(자동변환됨)
 
 
             responseType: 'json' //수신타입
@@ -71,8 +77,18 @@ const ModifyForm = () => {
             console.log(response); //수신데이타
 
             if (response.data.result === 'success') {
-                //리다이렉트
-                navigate("/list3");
+                alert('업뎃 성공');
+
+                const authUser = response.data.apiData;
+                console.log(JSON.stringify(authUser));
+
+                //로컬스토리지의 authUser의 이름을 변경
+                localStorage.setItem('authUser', JSON.stringify(authUser));
+                
+
+                //메인 리다이렉트
+                navigate("/");
+
             } else {
                 alert(response.data.message);
             }
@@ -109,17 +125,19 @@ const ModifyForm = () => {
     useEffect( ()=>{
 
         console.log("마운트 되었을때");
-        console.log(no);
-        //서버로 no값을 보내서 no데이터 받기 그리고 화면에 출력하기
+        console.log(authUser);
+        console.log(token);
 
         axios({
 
             method: 'get', // put, post, delete
             
-            url: `http://localhost:9000/api/user/modifyform/${no}`, //get delete
+            url: 'http://localhost:9000/api/users/me', //get delete
+
+            //토큰값 헤더에 추가
+            headers: { "Authorization": `Bearer ${token}` },
             
-            responseType: 'json' //수신타입
-            
+            responseType: 'json' //수신타입            
 
 
         }).then(response => {
@@ -130,14 +148,21 @@ const ModifyForm = () => {
 
             if (response.data.result === 'success') {
                 //성공 시 로직
+                //console.log(response.data.apiData);
+
+                //가져온 데이타 화면에 반영
+
                 setId(response.data.apiData.id);
-                setPw(response.data.apiData.pw);
+                setPw(response.data.apiData.password);
                 setName(response.data.apiData.name);
                 setGender(response.data.apiData.gender);
 
+                
+
             } else {
                 //실패 시 로직, 리다이엑트로 보내기
-                navigate("/");
+                alert('메인 페이지로 돌아갑니다');
+                //navigate("/");
 
             }
 
@@ -162,7 +187,7 @@ const ModifyForm = () => {
         localStorage.removeItem('authUser');
 
         //회면 변경을 위한 상태값 변경
-        setToken(null);
+        
         setAuthUser(null);
 
 
@@ -279,10 +304,10 @@ const ModifyForm = () => {
                                         <span className="form-text">성별</span> 
                                         
                                         <label htmlFor="rdo-male">남</label> 
-                                        <input type="radio" id="rdo-male" name="gender" value='male' onChange={handleGender} /> 
+                                        <input type="radio" id="rdo-male" name="gender" value='male' checked={gender === 'male'}  onChange={handleGender} /> 
                                         
                                         <label htmlFor="rdo-female">여</label> 
-                                        <input type="radio" id="rdo-female" name="gender" value='female' onChange={handleGender} /> 
+                                        <input type="radio" id="rdo-female" name="gender" value='female' checked={gender === 'female'} onChange={handleGender} /> 
 
                                     </div>
 
