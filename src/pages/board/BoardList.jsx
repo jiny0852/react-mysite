@@ -67,9 +67,17 @@ const BoardList = () => {
 
 
 
-    //게시글 타이틀 읽기 선택
-    const handleSelectBoard = (no) => {
-        console.log('게시글 하나 읽기 클릭');
+    //게시글 삭제버튼 표시
+    const handleDel = () => {
+
+        //const aaa = JSON.parse(localStorage.getItem('authUser')).no;
+
+        if ( localStorage.getItem('authUser') !== null ) {
+            return JSON.parse(localStorage.getItem('authUser')).no;
+
+        } else {
+            return 0;
+        }
 
     };
 
@@ -136,17 +144,22 @@ const BoardList = () => {
                                         </tr>
                                     </thead>
 
+                                    <tbody>
 
-                                        { boardList.map( ( boardVo ) => { 
 
-                                            return(
-                                                <ItemBoard key={boardVo.no}
-                                                board = {boardVo} 
-                                                selectBoard={handleSelectBoard}
-                                                
-                                                />                                            
+                                            { boardList.map( ( boardVo ) => { 
 
-                                        ) } ) } 
+                                                return(
+                                                    <ItemBoard key={boardVo.no}
+                                                    board = {boardVo} 
+                                                    delBoard={handleDel}
+                                                    
+                                                    />                                            
+
+                                            ) } ) } 
+
+
+                                    </tbody>        
                                             
                                             
                                             {/*}

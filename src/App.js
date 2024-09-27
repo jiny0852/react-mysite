@@ -11,6 +11,10 @@ import JoinOk from './pages/user/JoinOk';
 import BoardList from './pages/board/BoardList';
 import Read from './pages/board/Read';
 
+import Form from './pages/attach/Form';
+import Form2 from './pages/attach/Form2';
+import Result from './pages/attach/Result';
+
 
 
 
@@ -34,7 +38,11 @@ function App() {
           <Route path='/user/joinok' element={<JoinOk />} />
 
           <Route path='/board/boardlist' element={<BoardList />} />
-          <Route path='/board/read' element={<Read />} />
+          <Route path='/board/read/:no' element={<Read />} />
+
+          <Route path='/attach/form' element={<Form />} />
+          <Route path='/attach/form2' element={<Form2 />} />
+          <Route path='/attach/result' element={<Result />} />
 
 
 

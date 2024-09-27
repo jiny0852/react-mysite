@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import '../../css/main.css';
 import '../../css/board.css';
 
 const ItemBoard = ( props ) => {
@@ -12,7 +13,11 @@ const ItemBoard = ( props ) => {
     /*---상태관리 변수들(값이 변화면 화면 랜더링 )---*/
 
     /*---일반 변수--------------------------------*/
-    const { board } = props;
+    const { board, delBoard } = props;
+    console.log(board.userNo);
+    console.log(delBoard());
+    
+
 
     /*---일반 메소드 -----------------------------*/
 
@@ -22,33 +27,45 @@ const ItemBoard = ( props ) => {
 
         <>
 
-            <div>
-
-                <tbody>
+     
 
             
-                    <tr>
-                        <td>{board.no}</td>
-                        <td className="text-left"><Link to="" rel="noreferrer noopener">{board.title}</Link></td>
-                        <td>{board.userName}</td>
-                        <td>{board.hit}</td>
-                        <td>{board.regDate}</td>
-                        
-                        {/* 로그인했을때 
-                        <c:if test="${sessionScope.authUser.no == boardVo.userNo}">
+                <tr>
+                    <td>{board.no}</td>
+                    <td className="text-left"><Link to={`/board/read/${board.no}`} rel="noreferrer noopener">{board.title}</Link></td>
+                    <td>{board.userName}</td>
+                    <td>{board.hit}</td>
+                    <td>{board.regDate}</td>
+                    
+
+                    {
+                        (delBoard() === board.userNo)? (
+
                             <td><Link to="" rel="noreferrer noopener">[삭제]</Link></td>
-                        </c:if>
-                        */}
+
+                        ) : (
+
+                            <td></td>
+                            
+                        ) 
+                    
+                    }
+
                         
-                    </tr>
-
-                </tbody>
 
 
 
 
 
-            </div>
+
+
+
+
+                    
+                </tr>
+
+
+
 
         </>
 
