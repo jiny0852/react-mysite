@@ -60,7 +60,7 @@ const ModifyForm = () => {
 
             method: 'put',// put, post, delete
 
-            url: 'http://localhost:9000/api/users/me', //get delete
+            url: `${process.env.REACT_APP_API_URL}/api/users/me`, //get delete
 
             headers: { 
                 "Content-Type": "application/json; charset=utf-8", 
@@ -132,7 +132,7 @@ const ModifyForm = () => {
 
             method: 'get', // put, post, delete
             
-            url: 'http://localhost:9000/api/users/me', //get delete
+            url: `${process.env.REACT_APP_API_URL}/api/users/me`, //get delete
 
             //토큰값 헤더에 추가
             headers: { "Authorization": `Bearer ${token}` },

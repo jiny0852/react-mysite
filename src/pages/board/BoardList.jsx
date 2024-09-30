@@ -33,7 +33,7 @@ const BoardList = () => {
         axios({
 
             method: 'get',
-            url: 'http://localhost:9000/api/boards',
+            url: `${process.env.REACT_APP_API_URL}/api/boards`,
 
             responseType: 'json' //수신타입
         }).then(response => {

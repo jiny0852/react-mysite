@@ -76,7 +76,7 @@ const JoinForm = () => {
             axios({
     
                 method: 'post',// put, post, delete
-                url: 'http://localhost:9000/api/users',//get delete
+                url: `${process.env.REACT_APP_API_URL}/api/users`,//get delete
     
                 headers: { "Content-Type": "application/json; charset=utf-8" }, // post put
     

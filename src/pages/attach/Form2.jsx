@@ -56,7 +56,7 @@ const Form = () => {
 
             method: 'post', // put, post, delete
 
-            url: 'http://localhost:9000/api/attachs2',//get delete
+            url: `${process.env.REACT_APP_API_URL}/api/attachs2`,//get delete
 
             //headers: { "Content-Type": "application/json; charset=utf-8" }, // post put
             headers: { "Content-Type": "multipart/form-data" }, //첨부파일

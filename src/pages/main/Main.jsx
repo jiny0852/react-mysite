@@ -51,7 +51,7 @@ const Main = () => {
                         {/* content-head 없음 */}
                         <div id="main"> 
                         
-                            <img id="profile-img" src="/images/profile.jpg" alt="프로필사진" />
+                            <img id="profile-img" src="/images/KakaoTalk_20240930_094517869.jpg" alt="프로필사진" />
                             
                             <div id="greetings">
                                 <p className="text-xlarge">

@@ -26,7 +26,7 @@ const Read = () => {
     axios({
 
         method: 'get',
-        url: `http://localhost:9000/api/boards/${no}`,
+        url: `${process.env.REACT_APP_API_URL}/api/boards/${no}`,
 
         responseType: 'json' //수신타입
     }).then(response => {
