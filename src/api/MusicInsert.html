@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="wrap">
+
+        <Header >
+        {/* //header */}
+
+
+        
+
+        <div id="nav">
+            
+            <h4>관리자님 출근하세요*^^*</h4>
+
+        </div>
+        {/* //nav */}
+
+
+
+
+        <div id="container" class="clearfix">
+            <div id="aside">
+
+                <div>유저인포?</div>
+
+                <ul>
+                    <li>
+                        <div>유저인포?</div>
+                    </li>
+                    <li><Link to="" rel="noreferrer noopener">음원관리</Link></li>
+                    <li><Link to="" rel="noreferrer noopener">결제관리</Link></li>
+                </ul>
+            </div>
+            {/* //aside */}
+
+            <div id="content">
+
+                <div id="content-head">
+                    <h2>음원등록</h2>
+                    <div className="clear"></div>
+                </div>
+                {/* //content-head */}
+
+
+
+                <div id="musicInsert">
+                    <div id="musicInsertForm">
+                        <form action="" method="" onSubmit="" >
+
+                            {/* 음원제목 */}
+                            <div className="form-group">
+                                <label className="form-text" htmlFor="input-uid">음원제목</label> 
+                                <input type="text" id="input-uid" name="" value={id} onChange={handleId} placeholder="아이디를 입력하세요" />
+                                <button type="button" id="">중복체크</button>
+                            </div>
+
+                            {/* 아티스트 */}
+                            <div className="form-group">
+                                <label className="form-text" htmlFor="input-pass">아티스트(가수)</label> 
+                                <input type="text" id="input-pass" name="" value={pw} onChange={handlePw} placeholder="비밀번호를 입력하세요"	/>
+                            </div>
+
+                            {/* 앨범 */}
+                            <div className="form-group">
+                                <label className="form-text" htmlFor="input-name">앨범</label> 
+                                <input type="text" id="input-name" name="" value={name} onChange={handleName} placeholder="이름을 입력하세요" />
+                            </div>
+
+                            {/* 장르 */}
+                            <div className="form-group">
+                                <label className="form-text" htmlFor="input-name">장르</label> 
+                                <input type="text" id="input-name" name="" value={name} onChange={handleName} placeholder="이름을 입력하세요" />
+                            </div>
+
+                            <div>
+                                <label htmlFor="sel-telecom">이동통신사</label>
+                                <select id="sel-telecom" name="" value={telecom} onChange={handleTelecom} >
+                                    <option value="">선택하세요</option>
+                                    <option value="kt" selected={telecom === 'kt'} >KT</option>
+                                    <option value="sk" selected={telecom === 'sk'}>SK</option>
+                                    <option value="lgu+" selected={telecom === 'lgu+'}>LGU+</option>
+                                    <option value="etc" selected={telecom === 'etc'}>알뜰통신사</option>
+                                </select>
+                            </div>
+
+
+                            {/* 발매일 */}
+                            <div className="form-group">
+                                <label className="form-text" htmlFor="input-name">발매일</label> 
+                                <input type="text" id="input-name" name="" value={name} onChange={handleName} placeholder="이름을 입력하세요" />
+                            </div>
+
+                            {/* 재생시간 */}
+                            <div className="form-group">
+                                <label className="form-text" htmlFor="input-name">재생시간</label> 
+                                <input type="text" id="input-name" name="" value={name} onChange={handleName} placeholder="이름을 입력하세요" />
+                            </div>
+
+                            {/* 음원링크 */}
+                            <div className="form-group">
+                                <label className="form-text" htmlFor="input-name">음원링크</label> 
+                                <input type="text" id="input-name" name="" value={name} onChange={handleName} placeholder="이름을 입력하세요" />
+                            </div>
+
+                            {/* 앨범이미지? */}
+                            <div className="form-group">
+                                <label className="form-text" htmlFor="input-name">앨범이미지</label> 
+                                <input type="file" name="file" onChange={handleTag} />
+                            </div>
+
+
+
+
+
+
+
+
+
+                            {/* 장르 */}
+                            <div className="form-group">
+                                <span className="form-text">성별</span> 
+                                
+                                <label htmlFor="rdo-male">남</label> 
+                                <input type="radio" id="rdo-male" name="gender" value="male" onChange={handleGender} /> 
+                                
+                                <label htmlFor="rdo-female">여</label> 
+                                <input type="radio" id="rdo-female" name="gender" value="female" onChange={handleGender} /> 
+
+                            </div>
+                            
+                            {/* 버튼영역 */}
+                            <div className="button-area">
+                                <button type="submit" id="btn-submit">음원등록</button>
+                                <Link to="" id="btn_write" rel="noreferrer noopener">뒤로가기</Link>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    {/* //musicInsertForm */}
+                </div>
+                {/* //musicInsert */}
+            </div>
+            {/* //content  */}
+
+        </div>
+        {/* //container  */}
+
+
+        <Footer >
+        {/* //footer */}
+    </div>
+    {/* //wrap */}
+
+
+
+
+    
+</body>
+</html>

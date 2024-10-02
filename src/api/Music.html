@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="wrap">
+
+        <Header >
+        {/* //header */}
+
+
+        
+
+        <div id="nav">
+            
+            <h4>관리자님 출근하세요*^^*</h4>
+
+        </div>
+        {/* //nav */}
+
+
+
+
+        <div id="container" class="clearfix">
+            <div id="aside">
+
+                <div>유저인포?</div>
+
+                <ul>
+                    <li>
+                        <div>유저인포?</div>
+                    </li>
+                    <li><Link to="" rel="noreferrer noopener">음원관리</Link></li>
+                    <li><Link to="" rel="noreferrer noopener">결제관리</Link></li>
+                </ul>
+            </div>
+            {/* //aside */}
+
+            <div id="content">
+
+                <div id="content-head">
+                    <h3>음원리스트</h3>
+                    <div className="clear"></div>
+                </div>
+                {/* //content-head */}
+
+
+
+                <div id="content-search">
+                    <div>
+                        <input type="text" name="" value="" onChange="">
+                    </div>
+                    <div>
+                        <Link to='' className="btn_s">음원등록</Link>
+                    </div>
+                </div>
+                {/* //content-search */}
+
+
+
+                <div id="board">
+                    <div id="list">
+                        <form action="" method="">
+                            <div className="form-group text-right">
+                                <input type="text" />
+                                <button type="submit" id="btn_search">검색</button>
+                            </div>
+                        </form>
+
+                        <table >
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>음원제목</th>
+                                    <th>아티스트</th>
+                                    <th>장르</th>
+                                    <th>발매일</th>
+                                    <th>재생시간</th>
+                                    <th>수정</th>
+                                    <th>삭제</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+
+                                    { boardList.map( ( boardVo ) => { 
+
+                                        return(
+                                            <ItemBoard key={boardVo.no}
+                                            board = {boardVo} 
+                                            delBoard={handleDel}
+                                            
+                                            />                                            
+
+                                    ) } ) } 
+
+
+                            </tbody>        
+                                    
+                                    
+                                    {/*}
+                                    return (
+                                    <div>
+                                    <tr>
+                                        <td>{boardVo.no}</td>
+                                        <td className="text-left"><Link to="" rel="noreferrer noopener">{boardVo.title}</Link></td>
+                                        <td>{boardVo.userName}</td>
+                                        <td>{boardVo.hit}</td>
+                                        <td>{boardVo.regDate}</td>
+
+                                        {/* 로그인했을때 
+                                        <c:if test="${sessionScope.authUser.no == boardVo.userNo}">
+                                            <td><Link to="" rel="noreferrer noopener">[삭제]</Link></td>
+                                        </c:if>
+                                        
+
+                                    </tr></div> ) } ) }   */}
+
+
+                        </table>
+
+            
+                        <div id="paging">
+                            <ul>
+                                <li><Link to="" rel="noreferrer noopener">◀</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">1</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">2</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">3</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">4</Link></li>
+                                <li className="active"><Link to="" rel="noreferrer noopener">5</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">6</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">7</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">8</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">9</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">10</Link></li>
+                                <li><Link to="" rel="noreferrer noopener">▶</Link></li>
+                            </ul>
+                            
+                            
+                            <div className="clear"></div>
+                        </div>
+                        <Link to="" id="btn_write" rel="noreferrer noopener">글쓰기</Link>
+                    
+                    </div>
+                    {/* //list */}
+                </div>
+                {/* //board */}
+            </div>
+            {/* //content  */}
+
+        </div>
+        {/* //container  */}
+
+
+        <Footer >
+        {/* //footer */}
+    </div>
+    {/* //wrap */}
+
+
+
+
+    
+</body>
+</html>
