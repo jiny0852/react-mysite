@@ -44,7 +44,7 @@ const Header = () => {
 
             <div id="header" className="clearfix">
                 <h1>
-                    <Link to="/" rel="noreferrer noopener">MySite</Link>
+                    <Link to="/" rel="noreferrer noopener">MySite2</Link>
                 </h1>
 
                 {

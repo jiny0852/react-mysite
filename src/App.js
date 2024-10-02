@@ -10,6 +10,7 @@ import JoinOk from './pages/user/JoinOk';
 
 import BoardList from './pages/board/BoardList';
 import Read from './pages/board/Read';
+import MusicList from './pages/board/MusicList';
 
 import Form from './pages/attach/Form';
 import Form2 from './pages/attach/Form2';
@@ -39,6 +40,7 @@ function App() {
 
           <Route path='/board/boardlist' element={<BoardList />} />
           <Route path='/board/read/:no' element={<Read />} />
+          <Route path='/board/music' element={<MusicList />} />
 
           <Route path='/attach/form' element={<Form />} />
           <Route path='/attach/form2' element={<Form2 />} />

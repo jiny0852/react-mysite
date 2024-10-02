@@ -15,6 +15,9 @@ import '../../css/board.css';
 
 
 
+import { fetchMusicVideos } from '../../api/youtube.js';
+
+
 
 
 
@@ -24,10 +27,10 @@ const BoardList = () => {
     /*---라우터 관련-------------------------------*/
     const [boardList, setBoardList] = useState([]);
 
+
+    const [videos, setVideos] = useState([]);
+
     /*---상태관리 변수들(값이 변화면 화면 랜더링 )---*/
-
-
-
 
 
     /*---일반 변수--------------------------------*/
@@ -64,8 +67,21 @@ const BoardList = () => {
     useEffect( ()=>{
 
         console.log("마운트 온");
-
         getBoardList();
+
+
+
+
+
+        const getVideos = async () => {
+            const result = await fetchMusicVideos('music');
+            setVideos(result);
+        };
+        getVideos();
+
+        console.log('#######유튭데이타#########');
+        console.log(videos);
+        console.log('#######유튭데이타#########');
 
 
     }, [] );
@@ -114,6 +130,22 @@ const BoardList = () => {
                     {/* //aside */}
 
                     <div id="content">
+
+                        <div>
+                            <h1>Music Videos</h1>
+                            <ul>
+                                {videos.map(video => (
+                                    <li key={video.id.videoId}>
+                                        <h2>{video.snippet.title}</h2>
+                                        <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
+                                        <a href={`https://www.youtube.com/watch?v=${video.id.videoId}`} target="_blank" rel="noopener noreferrer">Watch</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+
+
 
                         <div id="content-head">
                             <h3>일반게시판</h3>
