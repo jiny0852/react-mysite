@@ -16,6 +16,8 @@ import Form from './pages/attach/Form';
 import Form2 from './pages/attach/Form2';
 import Result from './pages/attach/Result';
 
+import Chat from './pages/ai/Chat';
+
 
 
 
@@ -45,6 +47,8 @@ function App() {
           <Route path='/attach/form' element={<Form />} />
           <Route path='/attach/form2' element={<Form2 />} />
           <Route path='/attach/result' element={<Result />} />
+
+          <Route path='/ai/chat' element={<Chat />} />
 
 
 

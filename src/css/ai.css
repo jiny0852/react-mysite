@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/****************************************************************/
+/* 첨부파일 연습 ***************************************************/
+/****************************************************************/
+#ai #chat-box {
+	height: 400px;
+	background-color: #c6c6c6;
+	padding: 30px;
+	overflow-y: scroll;
+}
+
+#ai #txt-question {
+	height: 30px;
+	width: 97.3%;
+	padding: 10px;
+	font-size: 15px;
+}
+
+#ai #btn-sendMsg {
+	width: 300px;
+	padding: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+
+
+
+#ai #chat-box .user-msg-box {
+	width: 100%;
+	text-align: right;
+
+}
+
+#ai #chat-box .user-msg-box .user-msg {
+	float: right;
+	font-size: 13px;
+	padding: 10px;
+	background-color: #d7f8a8;
+	
+}
+
+#ai #chat-box .bot-msg-box {
+	width: 100%;
+	text-align: left;
+
+}
+
+#ai #chat-box .bot-msg-box .bot-msg {
+	float: left;
+	font-size: 13px;
+	padding: 10px;
+	background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
